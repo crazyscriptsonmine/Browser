@@ -12,9 +12,12 @@ use routine;
 #Output is stored in the folder specified
 
 # DATABASE ATTRIBUTES
+# location of the output location
 my $basepath = int(rand(10000));
-`mkdir $basepath`;
-`rm -rf $basepath/*`;
+if (@ARGV >= 1) { $basepath = $ARGV[0]; }
+`mkdir -p $basepath`;
+#`rm -rf $basepath/*`;
+
 my $statusfile = "$basepath/mystatus.txt";
 
 open(STATUS,">>$statusfile") or die "$basepath does not exist\n"; close (STATUS);
